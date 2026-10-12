@@ -132,7 +132,7 @@ export default function Landing() {
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-700 px-6 py-12 text-center text-white sm:px-12">
           <h2 className="text-3xl text-white">Ready to stop juggling five different portals?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-indigo-100">Create a student account in under a minute, or sign in with a demo account to look around.</p>
+          <p className="mx-auto mt-3 max-w-xl text-indigo-100">Create a student account in under a minute, or sign in to pick up where you left off.</p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <Link to={start} className="btn bg-white text-navy-900 hover:bg-indigo-50">{user ? 'Open my dashboard' : 'Create account'}</Link>
             <Link to="/about" className="btn border border-white/30 text-white hover:bg-white/10">Learn how it works</Link>

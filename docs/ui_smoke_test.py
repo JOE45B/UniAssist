@@ -6,8 +6,13 @@ def check(name, cond, extra=''):
     global ok,bad
     if cond: ok+=1; print('  ok   ',name)
     else: bad+=1; print('  FAIL ',name, extra)
+ACCOUNTS = {'Student': 'miguel.santos@student.uniassist.edu', 'Faculty': 'ramon.delacruz@uniassist.edu', 'Admin': 'admin@uniassist.edu'}
+
+def fill_login(page, label):
+    page.fill('input[name=email]', ACCOUNTS[label]); page.fill('input[name=password]', 'Password123!')
+
 def login(page, label):
-    page.goto(BASE+'/login'); page.get_by_role('button', name=label, exact=True).click(); page.get_by_role('button', name='Sign in').click(); page.wait_for_selector('button[aria-label="Sign out"]', state='attached'); page.goto(BASE+'/dashboard')
+    page.goto(BASE+'/login'); fill_login(page, label); page.get_by_role('button', name='Sign in').click(); page.wait_for_selector('button[aria-label="Sign out"]', state='attached'); page.goto(BASE+'/dashboard')
 def overflow(page): return page.evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth')
 with sync_playwright() as p:
     b=p.chromium.launch()
@@ -27,7 +32,7 @@ with sync_playwright() as p:
     page.fill('input[type=email]','admin@uniassist.edu'); page.fill('input[type=password]','wrongpass'); page.get_by_role('button', name='Sign in').click()
     page.wait_for_selector('text=Incorrect email or password'); check('server login error shown', True)
     errors.clear()
-    print('Student'); page.get_by_role('button', name='Student', exact=True).click(); page.get_by_role('button', name='Sign in').click(); page.wait_for_url('**/tasks'); check('after login, returned to the page first requested', True); page.goto(BASE+'/dashboard')
+    print('Student'); fill_login(page, 'Student'); page.get_by_role('button', name='Sign in').click(); page.wait_for_url('**/tasks'); check('after login, returned to the page first requested', True); page.goto(BASE+'/dashboard')
     page.wait_for_selector('text=Today’s classes'); check('dashboard loads from API', page.locator('text=Recent activity').is_visible())
     
     page.screenshot(path=SHOTS+'/02-dashboard.png', full_page=True)

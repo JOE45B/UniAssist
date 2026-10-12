@@ -52,7 +52,7 @@ export default function About() {
 
       <div className="mt-14 flex flex-col gap-3 sm:flex-row">
         <Link to="/register" className="btn-primary">Create an account</Link>
-        <Link to="/login" className="btn-secondary">Sign in with a demo account</Link>
+        <Link to="/login" className="btn-secondary">Sign in</Link>
       </div>
     </div>
   )
