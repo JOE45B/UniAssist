@@ -28,7 +28,7 @@ export default function AdminDashboard() {
               </Section>
               <Section title="Requests by category"><BarList tone="sky" items={Object.entries(a.serviceRequests.byCategory).map(([label, value]) => ({ label, value }))} /></Section>
               <Section title="Student tasks">
-                <div className="flex items-end justify-between"><p className="text-3xl font-extrabold tabular-nums text-navy-900">{a.tasks.completionRate}%</p><p className="text-xs text-slate-500">{a.tasks.completed} of {a.tasks.total} completed</p></div>
+                <div className="flex items-end justify-between"><p className="font-display text-3xl font-bold tabular-nums text-navy-900">{a.tasks.completionRate}%</p><p className="text-xs text-slate-500">{a.tasks.completed} of {a.tasks.total} completed</p></div>
                 <div className="mt-2"><Progress value={a.tasks.completionRate} tone="teal" /></div>
                 <div className="mt-4"><BarList items={[{ label: 'Pending', value: a.tasks.pending, tone: 'amber' }, { label: 'Overdue', value: a.tasks.overdue, tone: 'rose' }, { label: 'Completed', value: a.tasks.completed, tone: 'teal' }]} /></div>
               </Section>

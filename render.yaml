@@ -6,7 +6,8 @@ services:
     name: uniassist
     runtime: node
     plan: free
-    # Redeploy automatically on every push to main (run deploy.bat, or git push).
+    # Redeploy automatically on every push to main. auto-deploy.bat (also started by
+    # start-uniassist.bat) pushes saved changes for you; deploy.bat or git push also work.
     # If a build fails, Render keeps the previous version online.
     branch: main
     autoDeployTrigger: commit

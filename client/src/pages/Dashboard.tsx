@@ -60,14 +60,14 @@ export default function Dashboard() {
 
               <Section title="Task progress" action={<More to="/tasks" />}>
                 <div className="flex items-end justify-between">
-                  <p className="text-3xl font-extrabold tabular-nums text-navy-900">{d.tasks.completionRate}%</p>
+                  <p className="font-display text-3xl font-bold tabular-nums text-navy-900">{d.tasks.completionRate}%</p>
                   <p className="text-xs text-slate-500">{d.tasks.completed} of {d.tasks.total} completed</p>
                 </div>
                 <div className="mt-2"><Progress value={d.tasks.completionRate} tone="teal" /></div>
                 <dl className="mt-4 grid grid-cols-3 gap-2 text-center">
                   {([['Pending', d.tasks.pending, 'text-amber-700'], ['Completed', d.tasks.completed, 'text-teal-700'], ['Overdue', d.tasks.overdue, 'text-rose-700']] as const).map(([label, value, color]) => (
                     <div key={label} className="rounded-xl bg-slate-50 px-2 py-3">
-                      <dd className={`text-xl font-extrabold tabular-nums ${color}`}>{value}</dd>
+                      <dd className={`font-display text-xl font-bold tabular-nums ${color}`}>{value}</dd>
                       <dt className="text-xs text-slate-500">{label}</dt>
                     </div>
                   ))}

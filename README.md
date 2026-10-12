@@ -317,6 +317,22 @@ Errors always look like `{ "message": "..." }` with status 400 (validation, bad 
 | GET | `/dashboard/analytics` | Campus-wide analytics (staff) | — | `{"users":{"byRole":{"student":15,"faculty":3,"admin":1}},"serviceRequests":{…},"events":{…},…}` |
 | GET | `/search` | Search several collections | `?q=web&types=tasks,events&limit=5` | `{"query":"web","total":4,"results":{"tasks":[…],"events":[…]}}` |
 
+## Deployment (Render)
+
+The live site runs on Render as **one web service**: the Express server also serves the built React app, so the site and API share one URL. `render.yaml` holds the build and start commands.
+
+**One-time setup:** Render dashboard → **New → Blueprint** → pick this GitHub repo → enter `MONGO_URI` (the Atlas string) → **Deploy**. Render generates `JWT_SECRET`. In Atlas, Network Access must allow `0.0.0.0/0`.
+
+**Updating the live site:** Render redeploys on every push to `main`. On Windows:
+
+| File | What it does |
+| --- | --- |
+| `start-uniassist.bat` | Starts the API, the website and the auto-deployer, then opens the browser |
+| `auto-deploy.bat` | Watches the project; 60 s after your last edit it type-checks, commits and pushes. Broken code is not pushed. |
+| `deploy.bat` | One-off manual deploy: type-check, ask for a message, commit and push |
+
+The free plan sleeps after ~15 minutes without visitors; the next visit takes about a minute to wake it.
+
 ## Testing
 
 ```bash
@@ -363,4 +379,4 @@ cd client && npm run build
 - Facilities are a fixed catalogue in `server/utils/constants.js`, not an editable collection.
 - No email notifications, file attachments, password reset or pagination.
 - Login tokens are stored in `localStorage`.
-- The interface loads the "Plus Jakarta Sans" font from Google Fonts and falls back to the system font offline.
+- The interface loads the "Inter" font from Google Fonts and falls back to the system font offline.

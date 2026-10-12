@@ -53,7 +53,7 @@ export function StatCard({ label, value, hint, icon, tone = 'indigo' }: { label:
       <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ring-1 ring-inset ${TONES[tone]}`}><Icon name={icon} /></span>
       <div className="min-w-0">
         <p className="text-xs font-semibold text-slate-500">{label}</p>
-        <p className="text-2xl font-extrabold tabular-nums text-navy-900">{value}</p>
+        <p className="font-display text-2xl font-bold tabular-nums text-navy-900">{value}</p>
         {hint && <p className="truncate text-xs text-slate-500">{hint}</p>}
       </div>
     </div>

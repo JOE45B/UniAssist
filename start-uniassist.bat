@@ -1,6 +1,7 @@
 @echo off
-rem Starts the UniAssist API and website, then opens the browser.
-rem Keep both windows open while using the app; close them to stop it.
+rem Starts the UniAssist API, website and auto-deploy, then opens the browser.
+rem Keep the windows open while using the app; close them to stop it.
+rem The Auto-Deploy window uploads your saved changes to GitHub, and Render redeploys the live site.
 cd /d "%~dp0"
 
 if not exist "server\.env" (
@@ -21,6 +22,7 @@ if not exist "client\node_modules" (
 
 start "UniAssist API" cmd /k "cd /d "%~dp0server" && npm run dev"
 start "UniAssist Website" cmd /k "cd /d "%~dp0client" && npm run dev"
+start "UniAssist Auto-Deploy" cmd /k "cd /d "%~dp0" && node scripts\auto-deploy.js"
 
 echo Starting UniAssist... the browser will open in a few seconds.
 timeout /t 8 /nobreak >nul

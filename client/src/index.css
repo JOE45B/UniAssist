@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Headings, stat numbers and the logo. Lexend is designed for easy reading at a glance. */
+  --font-display: "Lexend", "Inter", ui-sans-serif, system-ui, sans-serif;
   --color-navy-950: #0b1030;
   --color-navy-900: #111742;
   --color-navy-800: #1a2158;
@@ -13,8 +15,9 @@
 
 @layer base {
   html { -webkit-text-size-adjust: 100%; }
-  body { @apply bg-surface text-ink font-sans antialiased; margin: 0; overflow-x: hidden; }
-  h1, h2, h3, h4 { @apply font-bold tracking-tight text-navy-900; text-wrap: balance; }
+  /* Inter alternates: tailed l, serifed I and open digits, so IDs, rooms and times are easier to read. */
+  body { @apply bg-surface text-ink font-sans antialiased; margin: 0; overflow-x: hidden; font-optical-sizing: auto; font-feature-settings: "cv05", "cv08", "ss01"; }
+  h1, h2, h3, h4 { @apply font-display font-semibold tracking-tight text-navy-900; text-wrap: balance; }
   :focus-visible { @apply outline-2 outline-offset-2 outline-indigo-500; }
   button { cursor: pointer; }
   button:disabled { cursor: not-allowed; }
