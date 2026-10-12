@@ -65,7 +65,7 @@ export default function AppLayout() {
         <Logo to="/dashboard" light />
         <button type="button" className="rounded-lg p-2 text-indigo-100 hover:bg-white/10 lg:hidden" onClick={() => setDrawer(false)} aria-label="Close menu"><Icon name="close" /></button>
       </div>
-      <nav className="flex-1 overflow-y-auto px-3 pb-4" aria-label="Sidebar">
+      <nav className="no-scrollbar flex-1 overflow-y-auto px-3 pb-4" aria-label="Sidebar">
         <p className="px-3 pb-2 pt-3 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-indigo-200/50">My campus</p>
         <NavList items={MAIN} onNavigate={() => setDrawer(false)} />
         {isStaff && (

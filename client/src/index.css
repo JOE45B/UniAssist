@@ -34,6 +34,9 @@
   .th { @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 whitespace-nowrap; }
   .td { @apply px-4 py-3 text-sm align-middle; }
   .eyebrow { @apply text-xs font-bold uppercase tracking-[0.14em] text-indigo-600; }
+  /* Still scrolls with the wheel, touch and keyboard; only the bar itself is hidden. */
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 }
 
 @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }

@@ -6,6 +6,10 @@ services:
     name: uniassist
     runtime: node
     plan: free
+    # Redeploy automatically on every push to main (run deploy.bat, or git push).
+    # If a build fails, Render keeps the previous version online.
+    branch: main
+    autoDeployTrigger: commit
     buildCommand: npm ci --prefix server && npm ci --prefix client --include=dev && npm run build --prefix client
     startCommand: npm start --prefix server
     healthCheckPath: /api/health
