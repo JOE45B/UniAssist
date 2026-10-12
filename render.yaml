@@ -1,0 +1,25 @@
+# Render Blueprint: deploys UniAssist as one web service.
+# The Express API serves the built React app, so the site and API share one URL.
+# Render dashboard -> New -> Blueprint -> pick this repo, then enter MONGO_URI when asked.
+services:
+  - type: web
+    name: uniassist
+    runtime: node
+    plan: free
+    buildCommand: npm ci --prefix server && npm ci --prefix client --include=dev && npm run build --prefix client
+    startCommand: npm start --prefix server
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # The site and API share one origin, so the client calls the API with a relative path.
+      - key: VITE_API_BASE_URL
+        value: /api
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: APP_TIMEZONE
+        value: Asia/Manila
