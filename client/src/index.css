@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-navy-950: #0b1030;
+  --color-navy-900: #111742;
+  --color-navy-800: #1a2158;
+  --color-navy-700: #252d6e;
+  --color-ink: #151936;
+  --color-surface: #f5f6fb;
+  --shadow-card: 0 1px 2px rgb(17 23 66 / 0.05), 0 4px 16px -8px rgb(17 23 66 / 0.12);
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-surface text-ink font-sans antialiased; margin: 0; overflow-x: hidden; }
+  h1, h2, h3, h4 { @apply font-bold tracking-tight text-navy-900; text-wrap: balance; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-indigo-500; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-slate-200/80 bg-white shadow-card; }
+  .btn, .btn-primary, .btn-secondary, .btn-ghost, .btn-danger { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-50 whitespace-nowrap; }
+  .btn-primary { @apply bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800; }
+  .btn-secondary { @apply border border-slate-300 bg-white text-navy-900 hover:bg-slate-50; }
+  .btn-ghost { @apply px-3 py-2 text-slate-600 hover:bg-slate-100 hover:text-navy-900; }
+  .btn-danger { @apply bg-rose-600 text-white hover:bg-rose-700; }
+  .btn-sm { @apply rounded-lg px-2.5 py-1.5 text-xs; }
+  .input { @apply block w-full min-w-0 rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none disabled:bg-slate-100; }
+  .input-error { @apply border-rose-400 focus:border-rose-500 focus:ring-rose-100; }
+  .label { @apply mb-1.5 block text-sm font-semibold text-navy-900; }
+  .th { @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 whitespace-nowrap; }
+  .td { @apply px-4 py-3 text-sm align-middle; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.14em] text-indigo-600; }
+}
+
+@keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+.animate-pop { animation: pop 0.16s ease-out; }
+@media (prefers-reduced-motion: reduce) { .animate-pop, .animate-spin, .animate-pulse { animation: none; } }

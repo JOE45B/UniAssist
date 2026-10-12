@@ -1,0 +1,11 @@
+export const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const
+export const PRIORITIES = ['low', 'medium', 'high'] as const
+export const REQUEST_CATEGORIES = ['Registrar', 'Enrollment', 'IT Support', 'Student Affairs', 'ID Concern', 'Document Request', 'Technical Support', 'Other'] as const
+export const REQUEST_STATUSES = ['pending', 'processing', 'ready', 'completed', 'rejected', 'cancelled'] as const
+export const DEPARTMENTS = ['Registrar', 'Guidance', 'Academic Advising', 'IT Services', 'Student Affairs', 'Finance', 'Library'] as const
+export const FACILITY_TYPES = ['Study Room', 'Computer Lab', 'Meeting Room', 'Library Room', 'Sports Facility'] as const
+export const ANNOUNCEMENT_CATEGORIES = ['Academic', 'Administrative', 'Events', 'Facilities', 'Emergency', 'General'] as const
+export const EVENT_CATEGORIES = ['Academic', 'Seminar', 'Sports', 'Cultural', 'Career', 'Organization', 'Other'] as const
+export const ROLES = ['student', 'faculty', 'admin'] as const
+export const OFFICE_HOURS = { open: '08:00', close: '17:00' }
+export const FACILITY_HOURS = { open: '07:00', close: '21:00' }
