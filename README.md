@@ -208,7 +208,7 @@ Errors always look like `{ "message": "..." }` with status 400 (validation, bad 
 
 | Method | Path | Purpose | Sample request | Sample response |
 | --- | --- | --- | --- | --- |
-| GET | `/health` | Health check | — | `{"status":"ok","time":"…"}` |
+| GET | `/health` | Health check (also pings MongoDB) | — | `{"status":"ok","database":"connected","time":"…"}`, or `503` when the database is unavailable |
 | GET | `/meta` | Enumerations (categories, statuses, facilities…) | — | `{"priorities":["low","medium","high"],…}` |
 | POST | `/auth/register` | Create a student account | `{"name":"Ana Cruz","email":"ana@x.edu","password":"Password123!"}` | `201 {"token":"…","user":{"_id":"…","role":"student"}}` |
 | POST | `/auth/login` | Sign in | `{"email":"admin@uniassist.edu","password":"Password123!"}` | `{"token":"…","user":{…}}` |

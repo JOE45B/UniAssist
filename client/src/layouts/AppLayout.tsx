@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
+import { AppFooter } from '../components/Footer'
 import Icon from '../components/Icon'
 import type { IconName } from '../components/Icon'
 import { useAuth } from '../hooks/useAuth'
@@ -89,7 +90,7 @@ export default function AppLayout() {
   )
 
   return (
-    <div className="min-h-dvh lg:pl-64">
+    <div className="flex min-h-dvh flex-col lg:pl-64">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 lg:block">{sidebar}</aside>
       {drawer && (
         <div className="fixed inset-0 z-50 lg:hidden">
@@ -110,7 +111,8 @@ export default function AppLayout() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8"><Outlet /></main>
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 sm:py-8"><Outlet /></main>
+      <AppFooter />
     </div>
   )
 }

@@ -1,8 +1,20 @@
+const mongoose = require('mongoose');
 const router = require('express').Router();
 const dash = require('../controllers/dashboardController');
 const { protect, staffOnly } = require('../middleware/auth');
 
-router.get('/health', (req, res) => res.json({ status: 'ok', time: new Date() }));
+// Health also pings MongoDB, so the footer status light and Render's health check
+// report a lost database connection instead of only "the API process is up".
+router.get('/health', async (req, res) => {
+  const conn = mongoose.connection;
+  let database = 'disconnected';
+  if (conn.readyState === 1) {
+    const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('ping timeout')), 3000));
+    database = await Promise.race([conn.db.admin().ping(), timeout]).then(() => 'connected', () => 'unreachable');
+  }
+  const ok = database === 'connected';
+  res.status(ok ? 200 : 503).json({ status: ok ? 'ok' : 'error', database, time: new Date(), ...(ok ? {} : { message: 'Database unavailable' }) });
+});
 router.get('/meta', dash.meta);
 router.use('/auth', require('./authRoutes'));
 router.use('/users', require('./userRoutes'));

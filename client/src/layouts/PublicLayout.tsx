@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import Logo from '../components/Logo'
 import Icon from '../components/Icon'
+import { PublicFooter } from '../components/Footer'
 import { useAuth } from '../hooks/useAuth'
 
 const LINKS = [{ to: '/', label: 'Home' }, { to: '/about', label: 'About' }]
@@ -35,16 +36,7 @@ export default function PublicLayout() {
         )}
       </header>
       <main className="flex-1"><Outlet /></main>
-      <footer className="border-t border-slate-200 bg-navy-950 text-slate-300">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <Logo light />
-          <p className="text-sm text-slate-400">University Student Services and Campus Assistant · Academic project</p>
-          <div className="flex gap-4 text-sm">
-            <Link to="/about" className="hover:text-white">About</Link>
-            <Link to="/login" className="hover:text-white">Sign in</Link>
-          </div>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   )
 }
