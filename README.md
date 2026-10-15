@@ -8,12 +8,12 @@ Every number on screen comes from MongoDB through the REST API. There are no har
 
 ## Group members and contributions
 
-| Member | Role | Contribution |
-| --- | --- | --- |
-| Jude | _e.g. Project lead / backend_ | _Fill in_ |
-| Mark | _e.g. Frontend_ | _Fill in_ |
-| Matt | _e.g. Database / testing_ | _Fill in_ |
-| Joseph | _e.g. Documentation / UI_ | _Fill in_ |
+| Member | Role |
+| --- | --- | 
+| Jude | Frontend / Database
+| Mark | Backend 
+| Matt | Project lead 
+| Joseph | Database / Testing 
 
 ## Features
 
