@@ -10,10 +10,10 @@ Every number on screen comes from MongoDB through the REST API. There are no har
 
 | Member | Role | Contribution |
 | --- | --- | --- |
-| _Name 1_ | _e.g. Project lead / backend_ | _Fill in_ |
-| _Name 2_ | _e.g. Frontend_ | _Fill in_ |
-| _Name 3_ | _e.g. Database / testing_ | _Fill in_ |
-| _Name 4_ | _e.g. Documentation / UI_ | _Fill in_ |
+| Jude | _e.g. Project lead / backend_ | _Fill in_ |
+| Mark | _e.g. Frontend_ | _Fill in_ |
+| Matt | _e.g. Database / testing_ | _Fill in_ |
+| Joseph | _e.g. Documentation / UI_ | _Fill in_ |
 
 ## Features
 
